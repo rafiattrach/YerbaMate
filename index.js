@@ -12,7 +12,8 @@ app.set("views", "views")
 
 
 app.get("/", (req,res,next) => {
-    res.send("hello")
+    // render() instead of send() for EJS
+    res.render("index")
 })
 
 app.listen(9000, () => {
