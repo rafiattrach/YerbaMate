@@ -6,8 +6,12 @@ const app = express()
 
 // static files contained in same global dir in assets folder
 app.use(express.static(path.join(__dirname, "assets")))
+app.use(express.static(path.join(__dirname, "images")))
+
+// set template engine to EJS
 app.set("view engine", "ejs")
 app.set("views", "views")
+
 
 
 
