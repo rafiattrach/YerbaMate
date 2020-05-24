@@ -2,6 +2,8 @@
 const express = require("express")
 const path = require("path")
 
+const homeRouter = require("./routes/home.route")
+
 const app = express()
 
 // static files contained in same global dir in assets folder
@@ -13,12 +15,13 @@ app.set("view engine", "ejs")
 app.set("views", "views")
 
 
+app.use("/", homeRouter)
 
 
-app.get("/", (req,res,next) => {
-    // render() instead of send() for EJS
-    res.render("index")
-})
+// app.get("/", (req,res,next) => {
+//     // render() instead of send() for EJS
+//     res.render("index")
+// })
 
 app.listen(9000, () => {
     console.log("Listening on port 9000!")
