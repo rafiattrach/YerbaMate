@@ -7,8 +7,9 @@ exports.getHome = (req, res, next) => {
     
     // if user filters on home page, return respective color
     let color = req.query.color
+    let validColors = ["every", "yellow", "orange", "green", "red"]
     let productPromise
-    if (color && color !== "all")
+    if (color && validColors.includes(color))
         productPromise = productsModel.getProductsByColor(color)
     else
         productPromise = productsModel.getAllProducts()
