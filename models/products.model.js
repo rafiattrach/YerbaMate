@@ -29,3 +29,15 @@ exports.getAllProducts = () => {
         }).catch(err => reject(err))
     })
 }
+
+
+exports.getProductsByColor = (color) => {
+    return new Promise((resolve, reject) => {
+        mongoose.connect(DB_URL).then(() => {
+            return Product.find({ color: color })
+        }).then(products => {
+            mongoose.disconnect()
+            resolve(products)
+        }).catch(err => reject(err))
+    })
+}
