@@ -34,7 +34,13 @@ exports.getAllProducts = () => {
 exports.getProductsByColor = (color) => {
     return new Promise((resolve, reject) => {
         mongoose.connect(DB_URL).then(() => {
-            return Product.find({ color: color })
+            if (color === "every") {
+                return Product.find().then(products => {
+                    mongoose.disconnect()
+                    resolve(products)
+                }).catch(err => reject(err))
+            }
+            else return Product.find({ color: color })
         }).then(products => {
             mongoose.disconnect()
             resolve(products)

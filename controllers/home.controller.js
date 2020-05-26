@@ -9,7 +9,7 @@ exports.getHome = (req, res, next) => {
     let color = req.query.color
     let validColors = ["every", "yellow", "orange", "green", "red"]
     let productPromise
-    if (color && validColors.includes(color))
+    if (validColors.includes(color))
         productPromise = productsModel.getProductsByColor(color)
     else
         productPromise = productsModel.getAllProducts()
