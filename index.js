@@ -3,6 +3,7 @@ const express = require("express")
 const path = require("path")
 
 const homeRouter = require("./routes/home.route")
+const productRouter = require("./routes/product.route")
 
 const app = express()
 
@@ -16,6 +17,7 @@ app.set("views", "views")
 
 
 app.use("/", homeRouter)
+app.use("/product", productRouter)
 
 
 // app.get("/", (req,res,next) => {
