@@ -1,0 +1,22 @@
+<%- include("parts/header")%>
+<%- include("parts/navbar")%>
+
+
+<div class="container text-center">
+    <h3>Create Account</h3>
+    <form action="/signup" method="POST">
+        <input type="text" class="form-control" name="username" placeholder="Username">
+        <input type="email" class="form-control" name="email" placeholder="E-mail">
+        <input type="password" class="form-control" name="password" placeholder="Password">
+        <input type="password" class="form-control" name="confirmPassword" placeholder="Confirm your password">
+        <input type="submit" value="Create Account" class="btn btn-primary">
+    </form>
+    <br>
+    <div>
+        Have you already signed up? <a href="/login">Login Here</a>
+    </div>
+</div>
+
+
+
+<%- include("parts/footer")%>
