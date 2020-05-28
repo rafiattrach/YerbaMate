@@ -26,6 +26,9 @@ app.use(express.static(path.join(__dirname, "images")))
 app.use(session({
     secret: "a secret no one is able to discover... hopefully, ok if you do props to you",
     saveUninitialized: false,
+    cookie: {
+        maxAge: 3600000
+    },
     resave: false,
     store: STORE
 }))
