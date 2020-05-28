@@ -44,3 +44,34 @@ exports.createNewUser = (username, email, password) => {
     })
 
 }
+
+exports.login = (email, password) => {
+
+
+
+    return new Promise((resolve, reject) => {
+        mongoose.connect(DB_URL)
+            .then(() => {
+                User.findOne({ email: email })
+            }).then(user => {
+                if (!user) {
+                    mongoose.disconnect()
+                    reject("No account is registered with the following E-mail!")
+                } else {
+                    // nested promise in order to have access to user
+                    bcrypt.compare(password, user.password).then(same => {
+                        if (!same) {
+                            mongoose.disconnect()
+                            reject("The password is incorrect! Try again!")
+                        } else {
+                            mongoose.disconnect()
+                            resolve(user._id)
+                        }
+                    })
+                }
+            }).catch(err => {
+                mongoose.disconnect()
+                reject(err)
+            })
+    })
+}

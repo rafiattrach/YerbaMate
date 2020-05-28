@@ -21,3 +21,16 @@ exports.postSignup = (req, res, next) => {
 exports.getLogin = (req, res, next) => {
     res.render("login")
 }
+
+exports.postLogin = (req, res, next) => {
+
+    authModel
+        .createNewUser(req.body.email, req.body.password)
+        .then(() => {
+            res.redirect("/")
+            .catch((err) => {
+                console.log(err)
+                res.redirect("/login")})
+        })
+
+}
