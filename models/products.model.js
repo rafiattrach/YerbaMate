@@ -30,6 +30,20 @@ exports.getAllProducts = () => {
     })
 }
 
+exports.getProductById = id => {
+    return new Promise((resolve, reject) => {
+        mongoose.connect(DB_URL)
+            .then(() => {
+                return Product.findById(id)
+            })
+            .then(product => {
+                mongoose.disconnect()
+                resolve(product)
+            })
+            .catch(err => reject(err))
+    })
+}
+
 
 exports.getProductsByColor = (color) => {
     return new Promise((resolve, reject) => {
