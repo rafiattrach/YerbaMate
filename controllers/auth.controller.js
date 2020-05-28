@@ -8,6 +8,13 @@ exports.getSignup = (req, res, next) => {
 
 exports.postSignup = (req, res, next) => {
 
+    authModel
+        .createNewUser(req.body.username, req.body.email, req.body.password)
+        .then(() => {
+            res.redirect("/login")
+            .catch((err) => res.redirect("/signup"))
+        })
+
 }
 
 

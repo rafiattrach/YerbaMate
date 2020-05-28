@@ -3,7 +3,7 @@ const bodyParser = require("body-parser")
 
 const authController = require("../controllers/auth.controller")
 
-router.get("/signup", authController.getSignUp)
+router.get("/signup", authController.getSignup)
 
 router.post(
     "/signup",

@@ -26,7 +26,10 @@ exports.getAllProducts = () => {
         }).then(products => {
             mongoose.disconnect()
             resolve(products)
-        }).catch(err => reject(err))
+        }).catch(err => {
+            mongoose.disconnect()
+            reject(err)
+        })
     })
 }
 
@@ -40,7 +43,10 @@ exports.getProductById = id => {
                 mongoose.disconnect()
                 resolve(product)
             })
-            .catch(err => reject(err))
+            .catch(err => {
+                mongoose.disconnect()
+                reject(err)
+            })
     })
 }
 
@@ -52,12 +58,17 @@ exports.getProductsByColor = (color) => {
                 return Product.find().then(products => {
                     mongoose.disconnect()
                     resolve(products)
-                }).catch(err => reject(err))
+                }).catch(err => {
+                    mongoose.disconnect()
+                    reject(err)})
             }
             else return Product.find({ color: color })
         }).then(products => {
             mongoose.disconnect()
             resolve(products)
-        }).catch(err => reject(err))
+        }).catch(err => {
+            mongoose.disconnect()
+            reject(err)
+        })
     })
 }
