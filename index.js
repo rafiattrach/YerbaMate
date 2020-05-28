@@ -4,6 +4,7 @@ const path = require("path")
 
 const homeRouter = require("./routes/home.route")
 const productRouter = require("./routes/product.route")
+const authRouter = require("./routes/auth.route")
 
 const app = express()
 
@@ -17,6 +18,7 @@ app.set("views", "views")
 
 
 app.use("/", homeRouter)
+app.use("/", authRouter)
 app.use("/product", productRouter)
 
 

@@ -1,6 +1,6 @@
 const productsModel = require("../models/products.model")
 
-exports.getProduct = (req, res, next) => {
+exports.getProductById = (req, res, next) => {
 
     // search for id 
 
