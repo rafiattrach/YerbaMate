@@ -10,6 +10,11 @@ router.post(
     bodyParser.urlencoded({ extended: true }),
     authController.postSignup
 )
+router.post(
+    "/login",
+    bodyParser.urlencoded({ extended: true }),
+    authController.postLogin
+);
 
 router.get("/login", authController.getLogin)
 

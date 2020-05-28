@@ -4,9 +4,9 @@ const path = require("path")
 
 // sessions for storing info on DB
 const session = require("express-session")
-const SessionShop = require("connect-mongodb-session")(session)
+const SessionStore = require("connect-mongodb-session")(session)
 
-const STORE = new SessionShop({
+const STORE = new SessionStore({
     // link of DB
     uri: "mongodb://localhost:27017/yerbaMate",
     collection: "sessions"
@@ -26,9 +26,7 @@ app.use(express.static(path.join(__dirname, "images")))
 app.use(session({
     secret: "a secret no one is able to discover... hopefully, ok if you do props to you",
     saveUninitialized: false,
-    cookie: {
-        maxAge: 3600000 // 1 hour in ms
-    },
+    resave: false,
     store: STORE
 }))
 

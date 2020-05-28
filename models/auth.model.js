@@ -51,9 +51,9 @@ exports.login = (email, password) => {
 
     return new Promise((resolve, reject) => {
         mongoose.connect(DB_URL)
-            .then(() => {
+            .then(() =>
                 User.findOne({ email: email })
-            }).then(user => {
+            ).then(user => {
                 if (!user) {
                     mongoose.disconnect()
                     reject("No account is registered with the following E-mail!")
