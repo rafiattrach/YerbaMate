@@ -1,6 +1,6 @@
 <%- include("parts/header")%>
 <%- include("parts/navbar")%>
-<%- include("parts/footer")%>
+
 
 <div class="container">
 
@@ -17,6 +17,7 @@
     </form>
 
 
+    <% if(products.length !== 0) {%>
     <div class="row">
         <% for(let product of products) {%>
         <div class="col col-12 col-md-6 col-lg-4 col-xl-3">
@@ -34,6 +35,13 @@
                 </div>
             </div>
         </div>
-        <% } %>
+        <%}%>
+        </div>
+    <% } else { %>
+        <div clayss="alert alert-danger">
+            We are unfortunately out of yerba mates =(
+        </div>
+        <%}%>
     </div>
-</div>
+
+    <%- include("parts/footer")%>
