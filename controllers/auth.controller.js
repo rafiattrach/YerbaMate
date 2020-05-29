@@ -36,3 +36,14 @@ exports.postLogin = (req, res, next) => {
         })
 }
 
+exports.logout = (req, res, next) => {
+
+    /*
+
+    removes session from DB when user decides to logout
+
+    */
+    req.session.destroy(() => {
+        res.redirect("/")
+    })
+}

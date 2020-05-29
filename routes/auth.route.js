@@ -18,4 +18,7 @@ router.post(
 
 router.get("/login", authController.getLogin)
 
+
+router.all("/logout", authController.logout)
+
 module.exports = router;
