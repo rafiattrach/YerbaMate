@@ -1,4 +1,6 @@
 const authModel = require("../models/auth.model")
+const validationResult = require("express-validator").validationResult
+
 
 
 exports.getSignup = (req, res, next) => {
@@ -7,6 +9,9 @@ exports.getSignup = (req, res, next) => {
 }
 
 exports.postSignup = (req, res, next) => {
+
+    return console.log(validationResult(req))
+
 
     authModel
         .createNewUser(req.body.username, req.body.email, req.body.password)
