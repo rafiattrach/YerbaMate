@@ -18,6 +18,21 @@
         <br>
         <input type="submit" value="Create Account" class="btn btn-primary">
     </form>
+    <% if (loginError) { %>
+    <br>
+    <p class="alert alert-danger">
+        <%= loginError%>
+    </p>
+    <% } %>
+
+    <% for (let error of validationErrors) { %>
+    <br>
+    <p class="alert alert-danger">
+        <%= error.msg%>
+    </p>
+    <% } %>
+
+
     <br>
     <div>
         Have you already signed up? <a href="/login">Login Here</a>
