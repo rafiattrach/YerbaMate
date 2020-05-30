@@ -1,5 +1,6 @@
 const router = require("express").Router()
 const bodyParser = require("body-parser")
+const check = require("express-validator").check
 
 const authController = require("../controllers/auth.controller")
 
@@ -8,6 +9,8 @@ router.get("/signup", authController.getSignup)
 router.post(
     "/signup",
     bodyParser.urlencoded({ extended: true }),
+    check("username").not().isEmpty(),
+    // check("")
     authController.postSignup
 )
 router.post(
