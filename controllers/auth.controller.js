@@ -32,6 +32,8 @@ exports.postLogin = (req, res, next) => {
         })
         .catch(err => {
             console.log(err)
+            // key value pair with flash, saving error in key loginError
+            req.flashConnector("loginError", err)
             res.redirect("/login")
         })
 }
