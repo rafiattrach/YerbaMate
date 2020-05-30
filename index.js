@@ -5,7 +5,7 @@ const path = require("path")
 // sessions for storing info on DB
 const session = require("express-session")
 const SessionStore = require("connect-mongodb-session")(session)
-const flashConnector = require("connect-flash")
+const flash = require("connect-flash")
 
 const STORE = new SessionStore({
     // link of DB
@@ -22,7 +22,7 @@ const app = express()
 // static files contained in same global dir in assets folder
 app.use(express.static(path.join(__dirname, "assets")))
 app.use(express.static(path.join(__dirname, "images")))
-app.use(flashConnector())
+app.use(flash())
 
 
 app.use(session({

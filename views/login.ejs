@@ -6,11 +6,19 @@
     <form action="/login" method="POST">
 
         <input type="email" class="form-control" name="email" placeholder="E-mail">
+        <br>
         <input type="password" class="form-control" name="password" placeholder="Password">
+        <br>
         <input type="submit" class="btn btn-primary" value="Login">
     </form>
     <br>
-    <div>   
+    <% if (loginError) { %>
+    <p class="alert alert-danger">
+        <%= loginError%>
+    </p>
+    <% } %>
+    <br>
+    <div>
         Sign up if you don't already have an account! <a href="/signup">Sign up Here</a>
     </div>
 </div>

@@ -19,7 +19,9 @@ exports.postSignup = (req, res, next) => {
 
 
 exports.getLogin = (req, res, next) => {
-    res.render("login")
+    res.render("login", {
+        loginError: req.flash("loginError")[0]
+    })
 }
 
 exports.postLogin = (req, res, next) => {
@@ -33,7 +35,7 @@ exports.postLogin = (req, res, next) => {
         .catch(err => {
             console.log(err)
             // key value pair with flash, saving error in key loginError
-            req.flashConnector("loginError", err)
+            req.flash("loginError", err)
             res.redirect("/login")
         })
 }
