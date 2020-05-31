@@ -3,11 +3,12 @@ const bodyParser = require("body-parser")
 const check = require("express-validator").check
 
 const authController = require("../controllers/auth.controller")
+const authGuard = require("./guards/auth.guard")
 
-router.get("/signup", authController.getSignup)
+router.get("/signup", authGuard.isNotAuth, authController.getSignup)
 
 router.post(
-    "/signup",
+    "/signup", authGuard.isNotAuth,
     bodyParser.urlencoded({ extended: true }),
     check("username").not().isEmpty().withMessage("Username is required!"),
     // not() only negates the next operator (single)
@@ -22,14 +23,14 @@ router.post(
     authController.postSignup
 )
 router.post(
-    "/login",
+    "/login", authGuard.isNotAuth,
     bodyParser.urlencoded({ extended: true }),
     authController.postLogin
 );
 
-router.get("/login", authController.getLogin)
+router.get("/login", authGuard.isNotAuth, authController.getLogin)
 
 
-router.all("/logout", authController.logout)
+router.all("/logout", authGuard.isAuth, authController.logout)
 
 module.exports = router;
