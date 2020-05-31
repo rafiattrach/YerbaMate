@@ -19,7 +19,7 @@
 
 <div class="container">
 
-    <form action="/" method="GET">
+    <form action="/#bottomOfPage" method="GET">
 
         <select name="color" class="form-control">
             <option value="every">Every</option>
@@ -48,6 +48,7 @@
         }
     </style>
     <div class="row">
+        <a id="bottomOfPage"></a>
         <% for(let product of products) {%>
         <div class="col col-12 col-md-6 col-lg-4 col-xl-3">
             <div class="card" style="width: 18rem;">
