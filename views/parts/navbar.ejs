@@ -6,23 +6,28 @@
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link" href="/">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/signup">Sign up</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/login">Login</a>
-        </li>
+        <% if(typeof isUser !== "undefined"){%>
         <li class="nav-item">
           <a class="nav-link" href="/basket">Basket</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/orders">Orders</a>
         </li>
+        <% } else { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/signup">Sign up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Login</a>
+        </li>
+        <% } %>
         <li class="nav-item">
           <a class="nav-link" href="/admin/add">Add Mate</a>
         </li>
@@ -43,9 +48,16 @@
             </li>
             -->
       </ul>
+      <% if(typeof isUser !== "undefined"){%>
       <form action="/logout" method="POST">
-        <input type="submit" value="Logout" class="btn btn-primary">
+        <input type="submit" value="Logout" class="btn btn-primary logout">
+        <style>
+          .logout {
+            background-color: coral
+          }
+        </style>
       </form>
+      <% } %>
     </div>
   </div>
 </nav>
