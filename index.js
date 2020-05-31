@@ -16,6 +16,7 @@ const STORE = new SessionStore({
 const homeRouter = require("./routes/home.route")
 const productRouter = require("./routes/product.route")
 const authRouter = require("./routes/auth.route")
+const basketRouter = require("./routes/basket.route")
 
 const app = express()
 
@@ -43,6 +44,7 @@ app.set("views", "views")
 app.use("/", homeRouter)
 app.use("/", authRouter)
 app.use("/product", productRouter)
+app.use("/basket", basketRouter)
 
 
 // app.get("/", (req,res,next) => {

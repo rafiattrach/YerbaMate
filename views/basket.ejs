@@ -1,0 +1,55 @@
+<%- include("parts/header")%>
+<%- include("parts/navbar")%>
+
+<style>
+    nav,
+    .row,
+    .col,
+    .form-control {
+        margin-bottom: 20px;
+    }
+
+    table,
+    td {
+        border: 1px solid coral;
+        padding: 10px;
+    }
+</style>
+<div class="container">
+
+    <% if(items.length === 0) { %>
+    <p class="alert alert-danger">You do not have any items in your basket</p>
+    <% } else { %>
+    <table>
+        <thead>
+            <td>Number</td>
+            <td>Product Name</td>
+            <td>Price</td>
+            <td>Amount</td>
+            <td>Total</td>
+            <td></td>
+        </thead>
+        <tbody>
+            <% for (let i = 0; i < items.length; i++) { %>
+            <tr>
+                <td> <%= i+1 %> </td>
+                <td> <a href="/product/<%= items[i].productId %>"><%= items[i].name %></a> </td>
+                <td> € <%= items[i].price %> </td>
+                <form method="POST">
+                    <td> <input type="text" name="amount" class="form-control" value="<%= items[i].amount %>"> </td>
+                    <td> € <%= items[i].price * items[i].amount %> </td>
+                    <td>
+                        <input type="hidden" name="basketId" value="<%= items[i]._id %>">
+                        <input type="submit" class="btn btn-success" value="Save" formaction="/basket/save">
+                        <input type="submit" class="btn btn-danger" value="Delete" formaction="/basket/delete">
+                    </td>
+                </form>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <% } %>
+
+</div>
+
+<%- include('parts/footer') %>

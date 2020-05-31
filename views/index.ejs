@@ -33,6 +33,12 @@
 
     <br>
 
+    <% if (validationError) { %>
+    <p class="alert alert-danger">
+        <%= validationError.msg%>
+    </p>
+    <% } %>
+
     <% if(products.length !== 0) {%>
     <style>
         .yerbas {
@@ -51,8 +57,12 @@
                         <a href="/product/<%= product._id%>"><%= product.name%></a>
                         <p>Price: € <%= product.price%> </p>
                     </h5>
-                    <form action="/cart" method="POST">
+                    <form action="/basket" method="POST" class="add-to-cart-form">
                         <input type="number" name="amount" class="form-control">
+                        <input type="hidden" name="name" class="form-control" value="<%= product.name%>">
+                        <input type="hidden" name="price" class="form-control" value="<%= product.price%>">
+                        <input type="hidden" name="productId" class="form-control" value="<%= product._id%>">
+                        <input type="hidden" name="redirectTo" value="/">
                         <input type="submit" value="Add to basket" class="btn btn-primary">
                     </form>
                 </div>
