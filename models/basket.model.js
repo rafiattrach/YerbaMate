@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-const DB_URL = "mongodb://localhost:27017/yerbaMate"
+const DB_URL = "mongodb+srv://rafiattrach:rafiattrach@cluster0-qya1b.mongodb.net/yerbaMate?retryWrites=true&w=majority"
 
 const basketSchema = mongoose.Schema({
     name: String,

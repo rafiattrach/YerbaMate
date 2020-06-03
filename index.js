@@ -9,7 +9,7 @@ const flash = require("connect-flash")
 
 const STORE = new SessionStore({
     // link of DB
-    uri: "mongodb://localhost:27017/yerbaMate",
+    uri: "mongodb+srv://rafiattrach:rafiattrach@cluster0-qya1b.mongodb.net/yerbaMate?retryWrites=true&w=majority",
     collection: "sessions"
 })
 
@@ -64,6 +64,8 @@ app.use((req, res, next) => {
 //     res.render("index")
 // })
 
-app.listen(9000, () => {
-    console.log("Listening on port 9000!")
+const port = process.env.PORT || 9000;
+
+app.listen(port, () => {
+    console.log("Listening on port " + port + "!")
 })
