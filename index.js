@@ -46,6 +46,13 @@ app.use("/", authRouter)
 app.use("/product", productRouter)
 app.use("/basket", basketRouter)
 
+app.use("/about", (req, res, next) => {
+    res.render("about", {
+        isUser: req.session.userId,
+        isAdmin: req.session.isAdmin,
+        pageTitle: "About"
+    })
+})
 
 app.use((req, res, next) => {
     res.status(404);
