@@ -47,6 +47,15 @@ app.use("/product", productRouter)
 app.use("/basket", basketRouter)
 
 
+app.use((req, res, next) => {
+    res.status(404);
+    res.render("cantFind", {
+        isUser: req.session.userId,
+        isAdmin: req.session.isAdmin,
+        pageTitle: "Page Not Found"
+    });
+});
+
 // app.get("/", (req,res,next) => {
 //     // render() instead of send() for EJS
 //     res.render("index")
