@@ -48,7 +48,8 @@ app.use("/basket", basketRouter)
 
 app.use("/about", (req, res, next) => {
     res.render("about", {
-        pageTitle: "About"
+        pageTitle: "About",
+        isUser: true
     })
 })
 
