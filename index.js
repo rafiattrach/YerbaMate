@@ -48,8 +48,6 @@ app.use("/basket", basketRouter)
 
 app.use("/about", (req, res, next) => {
     res.render("about", {
-        isUser: req.session.userId,
-        isAdmin: req.session.isAdmin,
         pageTitle: "About"
     })
 })
@@ -57,9 +55,7 @@ app.use("/about", (req, res, next) => {
 app.use((req, res, next) => {
     res.status(404);
     res.render("cantFind", {
-        isUser: req.session.userId,
-        isAdmin: req.session.isAdmin,
-        pageTitle: "Page Not Found"
+        pageTitle: "Invalid Page"
     });
 });
 

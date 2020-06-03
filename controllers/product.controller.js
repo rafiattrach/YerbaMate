@@ -11,7 +11,8 @@ exports.getProductById = (req, res, next) => {
     productsModel.getProductById(id).then(product => {
         res.render("product",
             {
-                product: product
+                product: product,
+                pageTitle: "Product"
             })
     })
 

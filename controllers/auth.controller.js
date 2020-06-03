@@ -7,7 +7,8 @@ exports.getSignup = (req, res, next) => {
 
     res.render("signup", {
         loginError: req.flash("loginError")[0],
-        validationErrors: req.flash("validationErrors")
+        validationErrors: req.flash("validationErrors"),
+        pageTitle: "Sign Up"
 
     })
 }
@@ -34,7 +35,8 @@ exports.postSignup = (req, res, next) => {
 
 exports.getLogin = (req, res, next) => {
     res.render("login", {
-        loginError: req.flash("loginError")[0]
+        loginError: req.flash("loginError")[0],
+        pageTitle: "Login"
     })
 }
 

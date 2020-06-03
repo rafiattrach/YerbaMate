@@ -21,7 +21,8 @@ exports.getBasket = (req, res, next) => {
         .then(items => {
             res.render("basket", {
                 items: items,
-                isUser: true
+                isUser: true,
+                pageTitle: "Basket"
             })
         }).catch(err => console.log(err))
 }
