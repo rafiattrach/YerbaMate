@@ -2,7 +2,14 @@
 <%- include("parts/navbar")%>
 <br>
 <br>
-<div class="container">
+<div class="container" style="@media (max-width: @screen-xs) {
+    body{font-size: 10px;}
+}
+
+@media (max-width: @screen-sm) {
+    body{font-size: 14px;}
+}
+">
     <h1 class="header-right">Tired of coffee? Try Mate 🍵</h1>
 
     <p class="header-right"> Have you been drinking coffee since forever? If you don't want to
