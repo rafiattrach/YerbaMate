@@ -43,15 +43,15 @@ app.set("views", "views")
 
 app.use("/", homeRouter)
 app.use("/", authRouter)
-app.use("/product", productRouter)
-app.use("/basket", basketRouter)
-
 app.use("/about", (req, res, next) => {
     res.render("about", {
         pageTitle: "About",
-        isUser: true
     })
 })
+app.use("/product", productRouter)
+app.use("/basket", basketRouter)
+
+
 
 app.use((req, res, next) => {
     res.status(404);
@@ -60,10 +60,7 @@ app.use((req, res, next) => {
     });
 });
 
-// app.get("/", (req,res,next) => {
-//     // render() instead of send() for EJS
-//     res.render("index")
-// })
+
 
 const port = process.env.PORT || 9000;
 
