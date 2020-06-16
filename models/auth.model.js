@@ -16,7 +16,7 @@ exports.createNewUser = (username, email, password) => {
 
 
     return new Promise((resolve, reject) => {
-        mongoose.connect(DB_URL)
+        mongoose.connect(DB_URL, {useNewUrlParser: true, useUnifiedTopology: true})
             .then(() => {
                 return User.findOne({ email: email })
             }).then(user => {
@@ -50,7 +50,7 @@ exports.login = (email, password) => {
 
 
     return new Promise((resolve, reject) => {
-        mongoose.connect(DB_URL)
+        mongoose.connect(DB_URL, {useNewUrlParser: true, useUnifiedTopology: true})
             .then(() =>
                 User.findOne({ email: email })
             ).then(user => {

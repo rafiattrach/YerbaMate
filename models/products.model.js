@@ -21,7 +21,7 @@ exports.getAllProducts = () => {
     // close connection
 
     return new Promise((resolve, reject) => {
-        mongoose.connect(DB_URL).then(() => {
+        mongoose.connect(DB_URL, {useNewUrlParser: true, useUnifiedTopology: true}).then(() => {
             return Product.find()
         }).then(products => {
             mongoose.disconnect()
@@ -35,7 +35,7 @@ exports.getAllProducts = () => {
 
 exports.getProductById = id => {
     return new Promise((resolve, reject) => {
-        mongoose.connect(DB_URL)
+        mongoose.connect(DB_URL, {useNewUrlParser: true, useUnifiedTopology: true})
             .then(() => {
                 return Product.findById(id)
             })
@@ -53,7 +53,7 @@ exports.getProductById = id => {
 
 exports.getProductsByColor = (color) => {
     return new Promise((resolve, reject) => {
-        mongoose.connect(DB_URL).then(() => {
+        mongoose.connect(DB_URL, {useNewUrlParser: true, useUnifiedTopology: true}).then(() => {
             if (color === "every") {
                 return Product.find().then(products => {
                     mongoose.disconnect()

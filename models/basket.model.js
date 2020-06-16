@@ -15,7 +15,7 @@ const BasketItem = mongoose.model("basket", basketSchema)
 
 exports.addNewItem = data => {
     return new Promise((resolve, reject) => {
-        mongoose.connect(DB_URL)
+        mongoose.connect(DB_URL, {useNewUrlParser: true, useUnifiedTopology: true})
             .then(() => {
                 let item = new BasketItem(data)
                 return item.save()
@@ -27,13 +27,15 @@ exports.addNewItem = data => {
             .catch(err => {
                 mongoose.disconnect()
                 reject(err)
+
+
             })
     })
 }
 
 exports.getItemByUser = userId => {
     return new Promise((resolve, reject) => {
-        mongoose.connect(DB_URL)
+        mongoose.connect(DB_URL, {useNewUrlParser: true, useUnifiedTopology: true})
             .then(() => {
                 return BasketItem.find({ userId: userId }, {}, { sort: { timestamp: 1 } })
             })
@@ -51,7 +53,7 @@ exports.getItemByUser = userId => {
 exports.deleteItem = id => {
     return new Promise((resolve, reject) => {
         mongoose
-            .connect(DB_URL)
+            .connect(DB_URL, {useNewUrlParser: true, useUnifiedTopology: true})
             .then(() => BasketItem.deleteOne({ _id: id }))
             .then(() => {
                 mongoose.disconnect();
@@ -67,7 +69,7 @@ exports.deleteItem = id => {
 exports.editItem = (id, newData) => {
     return new Promise((resolve, reject) => {
         mongoose
-            .connect(DB_URL)
+            .connect(DB_URL, {useNewUrlParser: true, useUnifiedTopology: true})
             .then(() => BasketItem.updateOne({ _id: id }, newData))
             .then(items => {
                 mongoose.disconnect()
