@@ -9,29 +9,76 @@
     I, unlike the majority of students who depend on coffee, prefer Mate instead, thought it would be a cool
     project to practice some of the MVC concepts learned from lectures, perform some CRUD operations with a database as
     well as just further develop my web development skills in Node.js, to produce a small product landing page
-    for some yerba mate products with filtering options alongside some verification aspects such as signing up and loging in as well as implementing
+    for some yerba mate products with filtering options alongside some verification aspects such as signing up and
+    loging in as well as implementing
     a basket for the user. </p>
 <br>
 <br>
 <br>
 <div class="about">
     <h2>MVC basic principle</h2>
-    <img id="about mvc-img" src="https://miro.medium.com/max/1152/1*rY6MdRjROHjppU2Iygoqsw.png" alt="mvc-pic">
+    <img id="mvc-img" src="https://miro.medium.com/max/1152/1*rY6MdRjROHjppU2Iygoqsw.png" alt="mvc-pic">
     <style>
-        .about {
-            text-align: center;
-            margin: 0 auto;
+        p {
+            margin: 0 15%;
+
         }
 
-        img {
+        .about {
+            text-align: center;
+
+        }
+
+        #mvc-img {
             width: 100%;
             height: auto;
             max-width: 600px;
             border: 2px solid black;
         }
 
+        #github-img:hover {
+            animation: shake 1s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes shake {
+
+            10%,
+            90% {
+                transform: translate3d(-1px, 0, 0);
+            }
+
+            20%,
+            80% {
+                transform: translate3d(2px, 0, 0);
+            }
+
+            30%,
+            50%,
+            70% {
+                transform: translate3d(-2px, 0, 0);
+            }
+
+            40%,
+            60% {
+                transform: translate3d(2px, 0, 0);
+            }
+        }
     </style>
 </div>
+
+<div class="about">
+    <p>
+        Source code:
+        <a href="https://github.com/rafiattrach/YerbaMate">
+            <img id="github-img" src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
+                alt="github logo" style="width:50px;height:60px;margin-top:50px;margin-bottom:60px;margin-left:15px;">
+        </a>
+
+    </p>
+
+</div>
+
 
 <%- include('parts/footer')%>
 
