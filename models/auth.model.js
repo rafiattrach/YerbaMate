@@ -1,7 +1,8 @@
 const mongoose = require("mongoose")
 var bcrypt = require('bcryptjs');
 
-const DB_URL = "mongodb+srv://rafiattrach:rafiattrach@cluster0-qya1b.mongodb.net/yerbaMate?retryWrites=true&w=majority"
+const DB_URL = process.env.DB_URL
+
 
 const userSchema = mongoose.Schema({
     username: String,

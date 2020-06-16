@@ -7,9 +7,11 @@ const session = require("express-session")
 const SessionStore = require("connect-mongodb-session")(session)
 const flash = require("connect-flash")
 
+
+
 const STORE = new SessionStore({
     // link of DB
-    uri: "mongodb+srv://rafiattrach:rafiattrach@cluster0-qya1b.mongodb.net/yerbaMate?retryWrites=true&w=majority",
+    uri: process.env.DB_URL,
     collection: "sessions"
 })
 
